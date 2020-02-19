@@ -1,0 +1,52 @@
+body {
+    background-color: lightgray;
+}
+
+#card-screen, #test-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.hide {
+    display: none;
+}
+
+.img {
+    width: 80%;
+    margin-top: 5px;
+}
+
+.play-btn, .start-btn {
+    cursor: pointer;
+    width: 200px;
+}
+
+#play-button {
+    margin-top: 100px;
+    text-align: center;
+    width: 100;
+}
+
+#test {
+    margin-top: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.text {
+
+}
+
+.card {
+    text-align: center;
+    border: 1px solid black;
+}
+
+.languages {
+    border: 50%;
+}
