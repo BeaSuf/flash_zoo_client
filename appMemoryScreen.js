@@ -4,10 +4,13 @@ const gameScreen = document.querySelector('#game-screen')
 const testScreen = document.querySelector('#test-screen')
 const inputBox = document.querySelector('#input-box')
 const startClick = document.querySelector('#start-button')
+const learnClick = document.querySelector('#learn-button')
 const cardScreen = document.querySelector('#card-screen')
 const playClick = document.querySelector('#play-button')
 const tests = document.querySelector('#test')
-const languageBox = document.querySelector('#language')
+const languageFlag = document.querySelector('#language')
+const startPage = document.querySelector('#home')
+const profile = document.querySelector('#profile')
 
 const url = 'http://localhost:8080/play'
 
@@ -57,10 +60,9 @@ let data = [
     }
 ]
 
-// // play page
-// let playScreen = function(data) {
-
-//     memory.classList.add('hide')
+// play page
+// const playScreen = function(data) {
+  
 //     let shuffledImg = _.shuffle(data)
 //     let shuffledLang = _.shuffle(data)
 
@@ -92,7 +94,8 @@ let data = [
 // }
 
 // memory page
-let memoryScreen = function(data) {
+const memoryScreen = function(data) {
+
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
         card.classList.add('card');
@@ -124,10 +127,9 @@ let memoryScreen = function(data) {
         playScreen(data)
     })
 }
-memoryScreen(data)
 
 // start page
-let start = function() {
+const start = function() {
 
     let userInput = document.createElement('input');
     userInput.setAttribute('type', 'text');
@@ -138,28 +140,116 @@ let start = function() {
     startButton.classList.add('start-btn');
     startClick.append(startButton);
     startButton.addEventListener('click', function(event){
+        event.preventDefault()
         memoryScreen(data)
     })
 }
-start()
 
 // language page
-let chooseLanguage = function() {
+const chooseLanguage = function() {
 
     let languages = ['german', 'french', 'italian']
-    let flags = ['https://images.fineartamerica.com/images-medium-large-5/germany-flag-vintage-distressed-finish-design-turnpike.jpg', 'https://counterinformation.files.wordpress.com/2017/05/dirty-french-flag.jpg?w=400' , 'https://i.pinimg.com/474x/31/5d/23/315d232f6bb4826a44730f1ca4dcde04.jpg']
+    let flags = ['🇩🇪', '🇫🇷', '🇮🇹']
 
     languages.forEach((language, index) => {
         let chosenLang = document.createElement('div');
         chosenLang.setAttribute('data-lang', `${language}`);
         chosenLang.classList.add('languages');
 
-        let img = document.createElement('img')
-        img.classList.add('img');
-        img.src = flags[index]
+        let img = document.createElement('h1')
+        img.classList.add('flag-language');
+        img.textContent = flags[index]
         chosenLang.appendChild(img)
 
-        languageBox.appendChild(chosenLang)
+        languageFlag.appendChild(chosenLang)
     })
 }
+
+
+let userLang = [
+    {
+        image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+        english: 'en',
+        german: 'ger',
+        french: 'fre',
+        italian: 'ita'
+
+    },
+    {
+        image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+        english: 'en',
+        french: 'fre',
+        italian: 'ita'
+    },
+    {
+        image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+        english: 'en',
+        italian: 'ita'
+    },
+    {
+        image_url: 'https://images.unsplash.com/photo-1495594059084-33752639b9c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',
+        english: 'en',
+        german: 'ger',
+    },
+    {
+        image_url: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80',
+        english: 'en',
+        french: 'fre',
+        italian: 'ita'
+    },
+    {
+        image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+        english: 'en',
+        german: 'ger',
+        french: 'fre',
+    }
+]
+const makeProfile = function(data) {
+
+    for (let i = 0; i < data.length; i++) {
+        let card = document.createElement('div');
+        card.classList.add('card');
+
+        let img = document.createElement('img')
+        img.classList.add('img');
+        img.src = data[i].image_url
+        card.appendChild(img)
+
+        let germanLang = document.createElement('h2')
+        germanLang.classList.add('text');
+        germanLang.textContent = data[i].german
+        card.appendChild(germanLang)
+
+        let frenchLang = document.createElement('h2')
+        frenchLang.classList.add('text');
+        frenchLang.textContent = data[i].french
+        card.appendChild(frenchLang)
+
+        let italianLang = document.createElement('h2')
+        italianLang.classList.add('text');
+        italianLang.textContent = data[i].italian
+        card.appendChild(italianLang)
+
+        let englishWord = document.createElement('h2')
+        englishWord.classList.add('text');
+        englishWord.textContent = data[i].english
+        card.appendChild(englishWord)
+
+        profile.appendChild(card);
+
+    }
+
+    let learnButton = document.createElement('button');
+    learnButton.textContent = 'LEARN'
+    learnButton.classList.add('start-btn');
+    learnClick.append(learnButton);
+    learnButton.addEventListener('click', function(event){
+        event.preventDefault()
+        chooseLanguage()
+    })
+}
+
+makeProfile(userLang)
 chooseLanguage()
+memoryScreen(data)
+start()
