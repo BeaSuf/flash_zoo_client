@@ -1,10 +1,11 @@
-
+// pages
 const memory = document.querySelector('.memory-screen')
 const gameScreen = document.querySelector('.game-screen')
 const startPage = document.querySelector('.home')
 const languageFlag = document.querySelector('.language')
 const userCards = document.querySelector('.userCards')
 
+// divs in all pages
 const testScreen = document.querySelector('.test-screen')
 const inputBox = document.querySelector('.input-box')
 const startClick = document.querySelector('.start-button')
@@ -14,7 +15,12 @@ const cardScreen = document.querySelector('.card-screen')
 const profile = document.querySelector('.profile')
 const tests = document.querySelector('.test')
 
-const url = 'http://localhost:8080/play'
+// to hide one page or all pages
+const pages = [memory, gameScreen, startPage, languageFlag, userCards]
+const hidePage = page => page.classList.add('hide')
+const hideAllPages = () => pages.forEach(hidePage)
+
+const domain = 'http://localhost:8080'
 
 //  Dummy Data Solution
 let data = [
@@ -55,15 +61,24 @@ let data = [
     }
 ]
 
+const getImage = function(word) {
+let url = `${domain}/api/words`
+console.log(word.id)
+
+    axios(
+        { url: url, 
+            method: 'post', 
+            data: { word_id: word.id }}
+    )
+    .then( res => console.log(res.data) );
+}
+
 // memory page
 const memoryScreen = function(data) {
 
-    memory.classList.add('hide')
-    gameScreen.classList.add('hide')
-    startPage.classList.add('hide')
-    languageFlag.classList.add('hide')
-    userCards.classList.add('hide')
+console.log(data)
 
+    hideAllPages()
     memory.classList.remove('hide')
 
     for (let i = 0; i < data.length; i++) {
@@ -72,11 +87,13 @@ const memoryScreen = function(data) {
 
         let img = document.createElement('img')
         img.classList.add('img');
+        getImage(data[i])
         img.src = data[i].image_url
         card.appendChild(img)
 
         let foreignLang = document.createElement('h2')
         foreignLang.classList.add('text');
+        
         foreignLang.textContent = data[i].foreignLang
         card.appendChild(foreignLang)
 
@@ -98,45 +115,11 @@ const memoryScreen = function(data) {
     })
 }
 
-// start page
-//const start = function() {
-
-    memory.classList.add('hide')
-    gameScreen.classList.add('hide')
-    startPage.classList.add('hide')
-    languageFlag.classList.add('hide')
-    userCards.classList.add('hide')
-    startPage.classList.remove('hide')
-
-    let userInput = document.createElement('input');
-    userInput.setAttribute('type', 'text');
-    userInput.setAttribute('value', '');
-    inputBox.appendChild(userInput)
-    
-    let startButton = document.createElement('button');
-    startButton.textContent = 'START'
-    startButton.classList.add('start-btn');
-    startClick.append(startButton);
-
-    startButton.addEventListener('click', function(event){
-        event.preventDefault()
-
-        axios
-        .get('')
-        .then(res => {
-            chooseLanguage(res.data)
-        })
-    })
-}
 
 // language page
-const chooseLanguage = function() {
+const supportedLanguages = function(userInfo) {
 
-    memory.classList.add('hide')
-    gameScreen.classList.add('hide')
-    startPage.classList.add('hide')
-    languageFlag.classList.add('hide')
-    userCards.classList.add('hide')
+    hideAllPages()
     languageFlag.classList.remove('hide')
 
     let languages = ['german', 'french', 'italian']
@@ -155,12 +138,24 @@ const chooseLanguage = function() {
 
         img.addEventListener('click', function(event){
             event.preventDefault()
+            userInfo[0].language = event.target.parentElement.dataset.lang
+            userDataToSend = userInfo[0]
 
-            axios
-            .get('')
+            console.log('english')
+            // axios
+            // .get(`${domain}/api/words`, userInfo)
+            // .then(res => {
+            //     memoryScreen(res.data)
+            // })
+            console.log(userInfo)
+            axios.get(
+                `${domain}/api/words`,
+                { params: { userInfo: userDataToSend } }
+            )
             .then(res => {
                 memoryScreen(res.data)
-            })
+            });
+                
         })
     })
 }
@@ -208,11 +203,7 @@ let userLang = [
 // add if statement user is on database to run the function
 const makeProfile = function(data) {
 
-    memory.classList.add('hide')
-    gameScreen.classList.add('hide')
-    startPage.classList.add('hide')
-    languageFlag.classList.add('hide')
-    userCards.classList.add('hide')
+    hideAllPages()
     userCards.classList.remove('hide')
 
     for (let i = 0; i < data.length; i++) {
@@ -255,13 +246,13 @@ const makeProfile = function(data) {
     learnButton.addEventListener('click', function(event){
         event.preventDefault()
     
-        axios
-        .get('')
-        .then(res => {
-            chooseLanguage(res.data)
-        })
+        // axios
+        // .get('')
+        // .then(res => {
+        //     chooseLanguage(res.data)
+        // })
     })
 }
 
 makeProfile(userLang)
-start()
+
