@@ -73,8 +73,20 @@ console.log(word.id)
     .then( res => console.log(res.data) );
 }
 
+const getTranslation = function(word, userInfo) {
+    let url = `${domain}/api/words/translate`
+    console.log(word.id)
+    console.log(userInfo.language)
+
+    return axios(
+        { url: url, 
+            method: 'post', 
+            data: { word_id: word.id, lang: userInfo.language }}
+    ).then( res => res.data.results[0][userInfo.language]);
+}
+
 // memory page
-const memoryScreen = function(data) {
+const memoryScreen = function(data, userInfo) {
 
 console.log(data)
 
@@ -87,15 +99,16 @@ console.log(data)
 
         let img = document.createElement('img')
         img.classList.add('img');
-        getImage(data[i])
+        // getImage(data[i])
         img.src = data[i].image_url
         card.appendChild(img)
-
-        let foreignLang = document.createElement('h2')
-        foreignLang.classList.add('text');
-        
-        foreignLang.textContent = data[i].foreignLang
-        card.appendChild(foreignLang)
+       
+        getTranslation(data[i], userInfo).then(res => {
+            let foreignLang = document.createElement('h2')
+            foreignLang.classList.add('text');
+            foreignLang.textContent = res
+            card.appendChild(foreignLang)
+        })
 
         let englishWord = document.createElement('h3')
         englishWord.classList.add('text');
@@ -153,7 +166,7 @@ const supportedLanguages = function(userInfo) {
                 { params: { userInfo: userDataToSend } }
             )
             .then(res => {
-                memoryScreen(res.data)
+                memoryScreen(res.data, userDataToSend)
             });
                 
         })
