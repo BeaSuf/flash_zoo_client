@@ -2,16 +2,12 @@ body {
     background-color: lightgray;
 }
 
-#card-screen, #test-screen {
+.card-screen, .test-screen {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 5px;
     width: 100%;
     margin-top: 50px;
-}
-
-.hide {
-    display: none;
 }
 
 .img {
@@ -24,13 +20,13 @@ body {
     width: 200px;
 }
 
-#play-button {
+.play-button {
     margin-top: 100px;
     text-align: center;
     width: 100;
 }
 
-#test {
+.test {
     margin-top: 200px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -39,7 +35,7 @@ body {
 }
 
 .text {
-
+    font-family: monospace;
 }
 
 .card {
@@ -47,16 +43,22 @@ body {
     border: 1px solid black;
 }
 
-#language {
+.home {
+    margin-top: 300px;
+    justify-content: center;
+    text-align: center;
+}
+.language {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     cursor: pointer;
     text-align: center;
+    margin-top: 300px;
 
 }
 
-#profile {
+.profile {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;
@@ -64,13 +66,17 @@ body {
     margin-top: 50px;
 }
 
-#learn-button {
+.learn-button {
     margin-top: 100px;
     text-align: center;
     width: 100;
 }
 
 .flag-language {
-    font-size: 150px;
+    font-size: 100px;
     margin: 0px;
+}
+
+.hide {
+    display: none;
 }

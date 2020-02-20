@@ -1,25 +1,20 @@
 
-const memory = document.querySelector('#memory-screen')
-const gameScreen = document.querySelector('#game-screen')
-const testScreen = document.querySelector('#test-screen')
-const inputBox = document.querySelector('#input-box')
-const startClick = document.querySelector('#start-button')
-const learnClick = document.querySelector('#learn-button')
-const cardScreen = document.querySelector('#card-screen')
-const playClick = document.querySelector('#play-button')
-const tests = document.querySelector('#test')
-const languageFlag = document.querySelector('#language')
-const startPage = document.querySelector('#home')
-const profile = document.querySelector('#profile')
+const memory = document.querySelector('.memory-screen')
+const gameScreen = document.querySelector('.game-screen')
+const startPage = document.querySelector('.home')
+const languageFlag = document.querySelector('.language')
+const userCards = document.querySelector('.userCards')
+
+const testScreen = document.querySelector('.test-screen')
+const inputBox = document.querySelector('.input-box')
+const startClick = document.querySelector('.start-button')
+const learnClick = document.querySelector('.learn-button')
+const playClick = document.querySelector('.play-button')
+const cardScreen = document.querySelector('.card-screen')
+const profile = document.querySelector('.profile')
+const tests = document.querySelector('.test')
 
 const url = 'http://localhost:8080/play'
-
-// Axios first round
-// axios
-// .get(url)
-// .then(res => {
-    // memoryScreen(res.data)
-// })
 
 //  Dummy Data Solution
 let data = [
@@ -60,41 +55,16 @@ let data = [
     }
 ]
 
-// play page
-// const playScreen = function(data) {
-  
-//     let shuffledImg = _.shuffle(data)
-//     let shuffledLang = _.shuffle(data)
-
-//     for (let i = 0; i < shuffledImg.length; i++) {
-
-//         let card = document.createElement('div');
-//         card.classList.add('card');
-
-//         let img = document.createElement('img')
-//         img.classList.add('img');
-//         img.src = shuffledImg[i].image_url
-//         card.appendChild(img)
-
-//         testScreen.appendChild(card);
-//     }
-
-//     for (let i = 0; i < shuffledLang.length; i++) {
-
-//         let card = document.createElement('div');
-//         card.classList.add('card');
-
-//         let foreignLang = document.createElement('h2')
-//         foreignLang.classList.add('text');
-//         foreignLang.textContent = shuffledLang[i].foreignLang
-//         card.appendChild(foreignLang)
-
-//         tests.appendChild(card);
-//     }
-// }
-
 // memory page
 const memoryScreen = function(data) {
+
+    memory.classList.add('hide')
+    gameScreen.classList.add('hide')
+    startPage.classList.add('hide')
+    languageFlag.classList.add('hide')
+    userCards.classList.add('hide')
+
+    memory.classList.remove('hide')
 
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
@@ -114,7 +84,6 @@ const memoryScreen = function(data) {
         englishWord.classList.add('text');
         englishWord.textContent = data[i].english
         card.appendChild(englishWord)
-        
         cardScreen.appendChild(card);
     }
 
@@ -122,6 +91,7 @@ const memoryScreen = function(data) {
     playButton.textContent = 'PLAY'
     playButton.classList.add('play-btn');
     playClick.append(playButton);
+
     playButton.addEventListener('click', function(event){
         event.preventDefault()
         playScreen(data)
@@ -131,22 +101,43 @@ const memoryScreen = function(data) {
 // start page
 const start = function() {
 
+    memory.classList.add('hide')
+    gameScreen.classList.add('hide')
+    startPage.classList.add('hide')
+    languageFlag.classList.add('hide')
+    userCards.classList.add('hide')
+    startPage.classList.remove('hide')
+
     let userInput = document.createElement('input');
     userInput.setAttribute('type', 'text');
+    userInput.setAttribute('value', '');
     inputBox.appendChild(userInput)
     
     let startButton = document.createElement('button');
     startButton.textContent = 'START'
     startButton.classList.add('start-btn');
     startClick.append(startButton);
+
     startButton.addEventListener('click', function(event){
         event.preventDefault()
-        memoryScreen(data)
+
+        axios
+        .get('')
+        .then(res => {
+            chooseLanguage(res.data)
+        })
     })
 }
 
 // language page
 const chooseLanguage = function() {
+
+    memory.classList.add('hide')
+    gameScreen.classList.add('hide')
+    startPage.classList.add('hide')
+    languageFlag.classList.add('hide')
+    userCards.classList.add('hide')
+    languageFlag.classList.remove('hide')
 
     let languages = ['german', 'french', 'italian']
     let flags = ['🇩🇪', '🇫🇷', '🇮🇹']
@@ -160,12 +151,21 @@ const chooseLanguage = function() {
         img.classList.add('flag-language');
         img.textContent = flags[index]
         chosenLang.appendChild(img)
-
         languageFlag.appendChild(chosenLang)
+
+        img.addEventListener('click', function(event){
+            event.preventDefault()
+
+            axios
+            .get('')
+            .then(res => {
+                memoryScreen(res.data)
+            })
+        })
     })
 }
 
-
+//  Dummy Data Solution
 let userLang = [
     {
         image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
@@ -204,7 +204,16 @@ let userLang = [
         french: 'fre',
     }
 ]
+
+// add if statement user is on database to run the function
 const makeProfile = function(data) {
+
+    memory.classList.add('hide')
+    gameScreen.classList.add('hide')
+    startPage.classList.add('hide')
+    languageFlag.classList.add('hide')
+    userCards.classList.add('hide')
+    userCards.classList.remove('hide')
 
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
@@ -234,7 +243,6 @@ const makeProfile = function(data) {
         englishWord.classList.add('text');
         englishWord.textContent = data[i].english
         card.appendChild(englishWord)
-
         profile.appendChild(card);
 
     }
@@ -243,13 +251,17 @@ const makeProfile = function(data) {
     learnButton.textContent = 'LEARN'
     learnButton.classList.add('start-btn');
     learnClick.append(learnButton);
+
     learnButton.addEventListener('click', function(event){
         event.preventDefault()
-        chooseLanguage()
+    
+        axios
+        .get('')
+        .then(res => {
+            chooseLanguage(res.data)
+        })
     })
 }
 
 makeProfile(userLang)
-chooseLanguage()
-memoryScreen(data)
 start()
