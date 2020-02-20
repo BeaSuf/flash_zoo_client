@@ -99,7 +99,7 @@ const memoryScreen = function(data) {
 }
 
 // start page
-const start = function() {
+//const start = function() {
 
     memory.classList.add('hide')
     gameScreen.classList.add('hide')
