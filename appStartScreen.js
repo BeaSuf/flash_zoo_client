@@ -1,7 +1,10 @@
 // const inputBox = document.querySelector('#input-box');
 // const startClick = document.querySelector('#start-button')
 
-const createScreen = () => {
+const createScreen = () => { 
+
+    hideAllPages()
+    startPage.classList.remove('hide')
 
     let userInput = document.createElement('input');
     userInput.setAttribute('type', 'text');
@@ -20,11 +23,15 @@ const handleStart = e => {
         // console.log(res.data.user);       
         // pass the res to flags screen 
         inputBox.classList.toggle("hide");
-        supportedLanguages();
+
+        let userInfo = res.data.user
+       console.log(userInfo)
+
+        supportedLanguages(userInfo);
     }
 
     axios(
-        { url: 'http://localhost:8080/api/user', 
+        { url: `${domain}/api/user`, 
             method: 'post', 
             data: { email: inputBox[0].value }}
         )
