@@ -62,15 +62,24 @@ let data = [
 ]
 
 const getImage = function(word) {
-let url = `${domain}/api/words`
-console.log(word.id)
+    let url = `${domain}/api/words`
+    console.log(word.id)
+    // [
+        //     {
+        //       id: 287,
+        //       english: 'Opossum',
+        //       german: null,
+        //       french: null,
+        //       italian: null,
+        //       image_url: 'https://images.unsplash.com/photo-1580533912476-4b3d4c160dff?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjExNjYyN30'
+        //     }
+        //   ]
 
-    axios(
+    return axios(
         { url: url, 
             method: 'post', 
             data: { word_id: word.id }}
-    )
-    .then( res => console.log(res.data) );
+    ).then( res => res.data.results[0].image_url);
 }
 
 const getTranslation = function(word, userInfo) {
@@ -97,11 +106,14 @@ console.log(data)
         let card = document.createElement('div');
         card.classList.add('card');
 
-        let img = document.createElement('img')
-        img.classList.add('img');
         // getImage(data[i])
-        img.src = data[i].image_url
-        card.appendChild(img)
+        getImage(data[i]).then(res => {
+            let img = document.createElement('img')
+            img.classList.add('img');
+            
+            img.src = res
+            card.appendChild(img)
+        })
        
         getTranslation(data[i], userInfo).then(res => {
             let foreignLang = document.createElement('h2')
