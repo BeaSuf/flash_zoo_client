@@ -1,82 +1,134 @@
 body {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
-.card-screen, .test-screen {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 5px;
-    width: 100%;
-    margin-top: 50px;
+.card-screen,
+.test-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  margin-top: 50px;
 }
 
 .img {
-    width: 80%;
-    margin-top: 5px;
+  width: 80%;
+  margin-top: 5px;
 }
 
-.play-btn, .start-btn {
-    cursor: pointer;
-    width: 200px;
+.play-btn,
+.start-btn {
+  cursor: pointer;
+  width: 200px;
 }
 
 .play-button {
-    margin-top: 100px;
-    text-align: center;
-    width: 100;
+  margin-top: 100px;
+  text-align: center;
+  width: 100;
 }
 
 .test {
-    margin-top: 200px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 5px;
-    cursor: pointer;
+  margin-top: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .text {
-    font-family: monospace;
+  font-family: monospace;
 }
 
 .card {
-    text-align: center;
-    border: 1px solid black;
+  text-align: center;
+  border: 1px solid black;
 }
 
 .home {
-    margin-top: 300px;
-    justify-content: center;
-    text-align: center;
+  margin-top: 300px;
+  justify-content: center;
+  text-align: center;
 }
 .language {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 300px;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 300px;
 }
 
 .profile {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-    width: 100%;
-    margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  margin-top: 50px;
 }
 
 .learn-button {
-    margin-top: 100px;
-    text-align: center;
-    width: 100;
+  margin-top: 100px;
+  text-align: center;
+  width: 100;
 }
 
 .flag-language {
-    font-size: 100px;
-    margin: 0px;
+  font-size: 100px;
+  margin: 0px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
+#language {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+#profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  margin-top: 50px;
+}
+
+#learn-button {
+  margin-top: 100px;
+  text-align: center;
+  width: 100;
+}
+
+.flag-language {
+  font-size: 150px;
+  margin: 0px;
+}
+
+/* *************************************************** */
+/* Colors for the game background cards and words */
+.color1 {
+  background-color: blue;
+}
+.color2 {
+  background-color: yellow;
+}
+.color3 {
+  background-color: violet;
+}
+.color4 {
+  background-color: green;
+}
+.color5 {
+  background-color: rgb(43, 236, 204);
+}
+.color6 {
+  background-color: rgb(98, 14, 109);
+}
+.color7 {
+  background-color: rgb(207, 136, 56);
+}
+/* *************************************************** */
