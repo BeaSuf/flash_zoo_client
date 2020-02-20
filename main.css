@@ -78,9 +78,6 @@ body {
   margin: 0px;
 }
 
-.hide {
-  display: none;
-}
 .language {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -106,6 +103,11 @@ body {
 .flag-language {
   font-size: 150px;
   margin: 0px;
+}
+
+/* make sure this class stay in this position */
+.hide {
+  display: none;
 }
 
 /* *************************************************** */
