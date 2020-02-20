@@ -8,7 +8,6 @@ let playScreen = function(data) {
 
     let shuffledImg = _.shuffle(data)
     let shuffledLang = _.shuffle(data)
-    // debugger
     for (let i = 0; i < shuffledImg.length; i++) {
 
         let card = document.createElement('div');
