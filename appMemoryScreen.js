@@ -90,6 +90,7 @@ const getTranslation = function(word, userInfo) {
 const memoryScreen = function(data, userInfo) {
 
 console.log(data)
+console.log(userInfo)
 
     hideAllPages()
     memory.classList.remove('hide')
@@ -109,6 +110,7 @@ console.log(data)
             foreignLang.classList.add('text');
             foreignLang.textContent = res
             card.appendChild(foreignLang)
+            data[i].translation = res
         })
 
         let englishWord = document.createElement('h3')
@@ -129,6 +131,36 @@ console.log(data)
     })
 }
 
+// // start page
+// //const start = function() {
+
+//     memory.classList.add('hide')
+//     gameScreen.classList.add('hide')
+//     startPage.classList.add('hide')
+//     languageFlag.classList.add('hide')
+//     userCards.classList.add('hide')
+//     startPage.classList.remove('hide')
+
+//     let userInput = document.createElement('input');
+//     userInput.setAttribute('type', 'text');
+//     userInput.setAttribute('value', '');
+//     inputBox.appendChild(userInput)
+    
+//     let startButton = document.createElement('button');
+//     startButton.textContent = 'START'
+//     startButton.classList.add('start-btn');
+//     startClick.append(startButton);
+
+//     startButton.addEventListener('click', function(event){
+//         event.preventDefault()
+
+//         axios
+//         .get('')
+//         .then(res => {
+//             chooseLanguage(res.data)
+//         })
+//     })
+// }
 
 // language page
 const supportedLanguages = function(userInfo) {
