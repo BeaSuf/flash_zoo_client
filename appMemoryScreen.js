@@ -14,6 +14,7 @@ const playClick = document.querySelector('.play-button')
 const cardScreen = document.querySelector('.card-screen')
 const profile = document.querySelector('.profile')
 const tests = document.querySelector('.test')
+const scoreBoard = document.querySelector('.scoreBoard')
 
 // to hide one page or all pages
 const pages = [memory, gameScreen, startPage, languageFlag, userCards]
@@ -244,9 +245,8 @@ let userLang = [
         french: 'fre',
     }
 ]
-
 // add if statement user is on database to run the function
-const makeProfile = function(data) {
+const showResults = function(data) {
 
     hideAllPages()
     userCards.classList.remove('hide')
@@ -260,27 +260,26 @@ const makeProfile = function(data) {
         img.src = data[i].image_url
         card.appendChild(img)
 
-        let germanLang = document.createElement('h2')
-        germanLang.classList.add('text');
-        germanLang.textContent = data[i].german
-        card.appendChild(germanLang)
-
-        let frenchLang = document.createElement('h2')
-        frenchLang.classList.add('text');
-        frenchLang.textContent = data[i].french
-        card.appendChild(frenchLang)
-
         let italianLang = document.createElement('h2')
         italianLang.classList.add('text');
-        italianLang.textContent = data[i].italian
+        italianLang.textContent = data[i].translation
         card.appendChild(italianLang)
 
-        let englishWord = document.createElement('h2')
+        let englishWord = document.createElement('h3')
         englishWord.classList.add('text');
         englishWord.textContent = data[i].english
         card.appendChild(englishWord)
         profile.appendChild(card);
 
+        let correctScore = document.createElement('h3')
+        correctScore.classList.add('text');
+        correctScore.textContent = `correct answer is: ${data.correctScore}`
+        scoreBoard.appendChild(correctScore)
+
+        let incorrectScore = document.createElement('h3')
+        incorrectScore.classList.add('text');
+        incorrectScore.textContent = `wrong answer is: ${data.incorrectScore}`
+        scoreBoard.appendChild(incorrectScore)
     }
 
     let learnButton = document.createElement('button');
@@ -290,14 +289,6 @@ const makeProfile = function(data) {
 
     learnButton.addEventListener('click', function(event){
         event.preventDefault()
-    
-        // axios
-        // .get('')
-        // .then(res => {
-        //     chooseLanguage(res.data)
-        // })
+        supportedLanguages()
     })
 }
-
-makeProfile(userLang)
-// start()
