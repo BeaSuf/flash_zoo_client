@@ -3,7 +3,9 @@ let cardTestImg = document.querySelectorAll('.test-screen')
 let cardTestWord = document.querySelectorAll('.test')
 
 let playScreen = function(data) {
-    memory.classList.add('hide')
+    hideAllPages()
+    gameScreen.classList.remove('hide')
+
     let shuffledImg = _.shuffle(data)
     let shuffledLang = _.shuffle(data)
     // debugger
