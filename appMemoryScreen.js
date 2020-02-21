@@ -23,45 +23,6 @@ const hideAllPages = () => pages.forEach(hidePage)
 
 const domain = 'http://localhost:8080'
 
-//  Dummy Data Solution
-// let data = [
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-//         foreignLang: 'nick',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80',
-//         foreignLang: 'batia',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-//         foreignLang: 'pouyan',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-//         foreignLang: 'philip',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-//         foreignLang: 'foreign',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1495594059084-33752639b9c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',
-//         foreignLang: 'foreign',
-//         english: 'eng'
-//     },
-//     {
-//         image_url: 'https://images.unsplash.com/photo-1503431128871-cd250803fa41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-//         foreignLang: 'foreign',
-//         english: 'eng'
-//     }
-// ]
-
 const getImage = function(word) {
     let url = `${domain}/api/words`
     console.log(word.id)
