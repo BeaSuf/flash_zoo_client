@@ -1,4 +1,5 @@
 # Flash Zoo Client Application
+https://beasuf.github.io/flash_zoo_client/
 
 Flash Zoo is a client application to learn 500 animal names by using flashcards. The user can learn in three different languages: German, French and Italian.
 
