@@ -21,7 +21,7 @@ const pages = [memory, gameScreen, startPage, languageFlag, userCards]
 const hidePage = page => page.classList.add('hide')
 const hideAllPages = () => pages.forEach(hidePage)
 
-const domain = 'http://localhost:8080'
+const domain = location.host === 'localhost' ? 'http://localhost:8080' : 'https://glacial-bayou-21611.herokuapp.com/'
 
 const getImage = function(word) {
     let url = `${domain}/api/words`
