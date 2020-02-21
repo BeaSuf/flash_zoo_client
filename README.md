@@ -25,5 +25,10 @@ Once finished the user is shown a summary screen displaying the score and the ca
 - CSS
 - Lodash
 - Axios
+- Vivify
 
 ## Challenges:
+- DOM manipulation
+- Single Page Application
+- Data Structure between front and back end
+- Use of Async functions
