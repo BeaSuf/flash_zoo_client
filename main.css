@@ -1,5 +1,5 @@
 body {
-  background-color: lightgray;
+  background-image: linear-gradient(to right, rgb(241, 236, 139) , rgb(198, 240, 150));
 }
 
 .card-screen,
@@ -12,8 +12,14 @@ body {
 }
 
 .img {
-  width: 80%;
   margin-top: 5px;
+  height: 180px;
+  width: 180px;
+}
+
+.imgMemory{
+  height: 180px;
+  width: 180px;
 }
 
 .play-btn,
@@ -43,10 +49,11 @@ body {
 .card {
   text-align: center;
   border: 1px solid black;
+  box-shadow: 5px 5px 5px 0 rgb(182, 180, 180);
 }
 
 .home {
-  margin-top: 300px;
+  /* margin-top: 50px; */
   justify-content: center;
   text-align: center;
 }
@@ -88,7 +95,7 @@ body {
 
 .profile {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 5px;
   width: 100%;
   margin-top: 50px;
@@ -112,25 +119,50 @@ body {
 
 /* *************************************************** */
 /* Colors for the game background cards and words */
+
 .color1 {
-  background-color: blue;
+  background-color: rgb(157, 157, 236);
 }
+
 .color2 {
-  background-color: yellow;
+  background-color: rgb(240, 165, 135);;
 }
 .color3 {
-  background-color: violet;
+  background-color: rgb(209, 115, 197);;
 }
 .color4 {
-  background-color: green;
+  background-color: rgb(111, 216, 143);;
 }
 .color5 {
-  background-color: rgb(43, 236, 204);
+  background-color: rgb(141, 207, 196);
 }
 .color6 {
-  background-color: rgb(98, 14, 109);
+  background-color: rgb(233, 198, 133);
 }
+
 .color7 {
-  background-color: rgb(207, 136, 56);
+  background-color: rgb(201, 223, 124);
+}
+
+.color1:active{
+  background-color: white;
+}
+.color2:active{
+  background-color: white;
+}
+.color3:active{
+  background-color: white;
+}
+.color4:active{
+  background-color: white;
+}
+.color5:active{
+  background-color: white;
+}
+.color6:active{
+  background-color: white;
+}
+.color7:active{
+  background-color: white;
 }
 /* *************************************************** */
