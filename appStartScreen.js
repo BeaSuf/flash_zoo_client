@@ -3,11 +3,12 @@
 
 const createScreen = () => { 
 
-    hideAllPages()
+    // hideAllPages()
     startPage.classList.remove('hide')
 
     let userInput = document.createElement('input');
-    userInput.setAttribute('type', 'text');
+    userInput.setAttribute('type', 'email');
+    userInput.setAttribute('placeholder', 'Your Email');
     inputBox.appendChild(userInput);
     
     let startButton = document.createElement('button');
@@ -22,7 +23,7 @@ const handleStart = e => {
     const handleUserStart = res => {
         // console.log(res.data.user);       
         // pass the res to flags screen 
-        inputBox.classList.toggle("hide");
+        // inputBox.classList.toggle("hide");
 
         let userInfo = res.data.user
        console.log(userInfo)
