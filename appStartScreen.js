@@ -1,5 +1,6 @@
 // const inputBox = document.querySelector('#input-box');
 // const startClick = document.querySelector('#start-button')
+const welcome = document.querySelector('.welcome')
 
 const createScreen = () => { 
 
@@ -15,6 +16,11 @@ const createScreen = () => {
     startButton.textContent = 'START'
     startButton.classList.add('start-btn');
     inputBox.append(startButton);
+
+    let welcomeMsg = document.createElement('h2')
+    welcomeMsg.classList.add('text');
+    welcomeMsg.textContent = 'Welcome to flashzoo'
+    welcome.appendChild(welcomeMsg)
 }
 
 const handleStart = e => {
