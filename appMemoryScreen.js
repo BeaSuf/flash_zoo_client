@@ -16,6 +16,11 @@ const profile = document.querySelector('.profile')
 const tests = document.querySelector('.test')
 const scoreBoard = document.querySelector('.scoreBoard')
 
+// instructions
+const welcome = document.querySelector('.welcome')
+const playIntruct = document.querySelector('.play-intruction')
+const testIntruct = document.querySelector('.test-intruction')
+
 // to hide one page or all pages
 const pages = [memory, gameScreen, startPage, languageFlag, userCards]
 const hidePage = page => page.classList.add('hide')
@@ -26,7 +31,7 @@ const domain = location.host === 'localhost' ? 'http://localhost:8080' : 'https:
 const getImage = function(word) {
     let url = `${domain}/api/words`
     console.log(word.id)
-    // [
+        // [
         //     {
         //       id: 287,
         //       english: 'Opossum',
@@ -35,7 +40,7 @@ const getImage = function(word) {
         //       italian: null,
         //       image_url: 'https://images.unsplash.com/photo-1580533912476-4b3d4c160dff?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjExNjYyN30'
         //     }
-        //   ]
+        //  ]
 
     return axios(
         { url: url, 
@@ -63,8 +68,8 @@ const getTranslation = function(word, userInfo) {
 // memory page
 const memoryScreen = function(data, userInfo) {
 
-console.table(data)
-console.log('length', data.length)
+    console.table(data)
+    console.log('length', data.length)
 
     hideAllPages()
     memory.classList.remove('hide')
@@ -77,11 +82,11 @@ console.log('length', data.length)
 
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
+        card.style.backgroundColor = 'rgb(240, 237, 178)';
         card.classList.add('card');
 
         // getImage(data[i])
         getImage(data[i]).then(res => {
-            console.log('xxx', res)
             let img = document.createElement('img')
             img.classList.add('imgMemory');
             data[i].image_url = res
@@ -115,6 +120,17 @@ console.log('length', data.length)
     playButton.classList.add('play-btn');
     playClick.append(playButton);
 
+    let childMessage = playIntruct.lastElementChild;  
+    while (childMessage) { 
+        playIntruct.removeChild(childMessage); 
+        childMessage = playIntruct.lastElementChild
+    }
+
+    let message = document.createElement('h2');
+    message.textContent = 'Take your time to memorise the cards with the name of each animal...'
+    message.classList.add('text');
+    playIntruct.append(message);
+
     playButton.addEventListener('click', function(event){
         event.preventDefault()
         console.log(data)
@@ -134,7 +150,7 @@ const supportedLanguages = function(userInfo) {
     let languages = ['german', 'french', 'italian']
     let flags = ['🇩🇪', '🇫🇷', '🇮🇹']
 
-    if(languageFlag.childElementCount === 0) {
+    if (languageFlag.childElementCount === 0) {
         languages.forEach((language, index) => {
             let chosenLang = document.createElement('div');
             chosenLang.setAttribute('data-lang', `${language}`);
@@ -152,12 +168,8 @@ const supportedLanguages = function(userInfo) {
                 userDataToSend = userInfo[0]
 
                 console.log('english')
-                // axios
-                // .get(`${domain}/api/words`, userInfo)
-                // .then(res => {
-                //     memoryScreen(res.data)
-                // })
                 console.log(userInfo)
+
                 axios.get(
                     `${domain}/api/words`,
                     { params: { userInfo: userDataToSend } }
@@ -169,6 +181,7 @@ const supportedLanguages = function(userInfo) {
             })
         })
     }
+   
 }
 
 // add if statement user is on database to run the function
@@ -185,7 +198,14 @@ const showResults = function(data) {
 
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
+        card.style.backgroundColor = 'rgb(240, 237, 178)';
         card.classList.add('card');
+
+        let englishWord = document.createElement('h3')
+        englishWord.classList.add('text');
+        englishWord.textContent = data[i].english
+        card.appendChild(englishWord)
+        profile.appendChild(card);
 
         let img = document.createElement('img')
         img.classList.add('imgMemory');
@@ -196,12 +216,6 @@ const showResults = function(data) {
         italianLang.classList.add('text');
         italianLang.textContent = data[i].translation
         card.appendChild(italianLang)
-
-        let englishWord = document.createElement('h3')
-        englishWord.classList.add('text');
-        englishWord.textContent = data[i].english
-        card.appendChild(englishWord)
-        profile.appendChild(card);
     }
 
     let childScore = scoreBoard.lastElementChild;  

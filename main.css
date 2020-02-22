@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, rgb(241, 236, 139) , rgb(198, 240, 150));
+  background-image: linear-gradient(to right, rgb(218, 224, 162) , rgb(175, 211, 109));
 }
 
 .card-screen,
@@ -12,7 +12,7 @@ body {
 }
 
 .img {
-  margin-top: 5px;
+  margin-top: 50px;
   height: 180px;
   width: 180px;
 }
@@ -42,19 +42,27 @@ body {
   cursor: pointer;
 }
 
+.play-intruction,
+.scoreBoard,
+.test-intruction {
+  text-align: center;
+}
+
+.test-intruction {
+  margin-top: 50px;
+}
+
 .text {
   font-family: monospace;
 }
 
 .card {
   text-align: center;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px 0 rgb(182, 180, 180);
+  border: 2px solid black;
+  box-shadow: 10px 10px 10px 0 rgb(71, 71, 71);
 }
 
 .home {
-  /* margin-top: 50px; */
-  justify-content: center;
   text-align: center;
 }
 .language {
@@ -63,7 +71,12 @@ body {
   width: 100%;
   cursor: pointer;
   text-align: center;
-  margin-top: 300px;
+  margin-top: 250px;
+}
+
+.box {
+  width: 180px;
+  height: 50px;
 }
 
 .profile {
@@ -141,7 +154,7 @@ body {
 }
 
 .color7 {
-  background-color: rgb(201, 223, 124);
+  background-color: rgb(243, 99, 99);
 }
 
 .color1:active{
