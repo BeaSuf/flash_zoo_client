@@ -102,6 +102,17 @@ cardTestWord.forEach(function(word){
 let correctScore = 0
 let incorrectScore = 0
 
+function animateImg(imgClicked, animationName, duration){
+    imgClicked.classList.add('vivify', animationName, duration)
+
+    function handleAnimationEnd() {
+        imgClicked.classList.remove('vivify', animationName, 'duration-900')
+        imgClicked.removeEventListener('animationend', handleAnimationEnd)    
+    }
+
+    imgClicked.addEventListener('animationend', handleAnimationEnd)  
+}
+
 let checkCorrect = function(wordClass, imgClass, dataPlayscreen) {
     console.log(dataPlayscreen)
     let imgClicked = document.querySelector(`.${imgClass}`)
@@ -109,12 +120,7 @@ let checkCorrect = function(wordClass, imgClass, dataPlayscreen) {
     if(wordClass === imgClass) {
         console.log(`correct`)
 
-        if (imgClicked.classList.contains('vivify')) {
-            imgClicked.classList.remove('vivify', 'blink', 'duration-900')
-            imgClicked.classList.remove('vivify', 'flip', 'duration-900')
-
-        }
-        imgClicked.classList.add('vivify', 'flip', 'duration-900')
+        animateImg(imgClicked, 'flip', 'duration-900')        
 
         correctScore++
         console.log(correctScore)
@@ -126,11 +132,9 @@ let checkCorrect = function(wordClass, imgClass, dataPlayscreen) {
         }
     } else {
         console.log(`incorrect`)
-        if (imgClicked.classList.contains('vivify')) {
-            imgClicked.classList.remove('vivify', 'flip', 'duration-900')
-            imgClicked.classList.remove('vivify', 'blink', 'duration-900')
-        }
-        imgClicked.classList.add('vivify', 'blink', 'duration-900')
+
+        animateImg(imgClicked, 'blink', 'duration-900')
+        
         
         incorrectScore++
         console.log(incorrectScore)
