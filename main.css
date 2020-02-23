@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, rgb(218, 224, 162) , rgb(175, 211, 109));
+  background-image: linear-gradient(to right, rgb(223, 233, 139) , rgb(175, 211, 109));
 }
 
 .card-screen,
@@ -11,10 +11,15 @@ body {
   margin-top: 50px;
 }
 
+.card {
+  background-color: rgb(240, 237, 178);
+}
+
 .img {
   margin-top: 50px;
   height: 180px;
   width: 180px;
+  cursor: pointer;
 }
 
 .imgMemory{
