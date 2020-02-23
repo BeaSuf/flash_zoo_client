@@ -1,9 +1,9 @@
 # Flash Zoo Client Application
 Click here to access: https://beasuf.github.io/flash_zoo_client/
 
-Flash Zoo is an educational Single Page Application game. In development two APIs are utilised. The translation API is used for translating name of animals from English into three different languages. A photo API is used to collect images in order to assign them to the chosen words. Then flashzoo cards are generated on the DOM.
+Flash Zoo is an educational Single Page Application game. We developed it in a way to make sure the experience is dynamic and interactive. In development two APIs are utilised. The translation API is used for translating name of animals from English into three different languages. A photo API is used to collect images in order to assign them to the chosen words. Then flashzoo cards are generated on the DOM based on user input and data from both database and APIs.
 
-## User Interface Diagram:
+## Wireframe
 
 <img src="wireFrame.jpg">
 
@@ -17,7 +17,7 @@ In the game screen the user will see the 7 cards with the photo and the matching
 
 In the rersult summary the user will be preseneted with all cards played and a score line to show number of correct and incorrect matches.
 
-## Technologies used:
+## Technologies
 
 - JavaScript
 - HTML
@@ -26,7 +26,7 @@ In the rersult summary the user will be preseneted with all cards played and a s
 - Axios
 - Vivify
 
-## Challenges:
+## Challenges
 
 - DOM manipulation
 - Single Page Application

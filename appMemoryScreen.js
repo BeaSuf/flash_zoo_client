@@ -198,8 +198,7 @@ const showResults = function(data) {
 
     for (let i = 0; i < data.length; i++) {
         let card = document.createElement('div');
-        card.style.backgroundColor = 'rgb(240, 237, 178)';
-        card.classList.add('card');
+        card.classList.add('card');                     
 
         let englishWord = document.createElement('h3')
         englishWord.classList.add('text');
@@ -224,14 +223,14 @@ const showResults = function(data) {
         childScore = scoreBoard.lastElementChild
     }
 
-    let correctScore = document.createElement('h3')
+    let correctScore = document.createElement('h2')
     correctScore.classList.add('text');
-    correctScore.textContent = `correct answer is: ${data.correctScore === undefined ? 0 : data.correctScore}`
+    correctScore.textContent = `correct cards: ${data.correctScore === undefined ? 0 : data.correctScore}`
     scoreBoard.appendChild(correctScore)
 
-    let incorrectScore = document.createElement('h3')
+    let incorrectScore = document.createElement('h2')
     incorrectScore.classList.add('text');
-    incorrectScore.textContent = `wrong answer is: ${data.incorrectScore === undefined ? 0 : data.incorrectScore}`
+    incorrectScore.textContent = `incorrect cards: ${data.incorrectScore === undefined ? 0 : data.incorrectScore}`
     scoreBoard.appendChild(incorrectScore)
 
     let childBtn = learnClick.lastElementChild;  
