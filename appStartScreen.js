@@ -1,6 +1,3 @@
-// const inputBox = document.querySelector('#input-box');
-// const startClick = document.querySelector('#start-button')
-const welcome = document.querySelector('.welcome')
 
 const createScreen = () => { 
 
@@ -27,26 +24,19 @@ const handleStart = e => {
     e.preventDefault();
 
     const handleUserStart = res => {
-        // console.log(res.data.user);       
-        // pass the res to flags screen 
-        // inputBox.classList.toggle("hide");
-
+       
         let userInfo = res.data.user
-       console.log(userInfo)
+        console.log(userInfo)
 
         supportedLanguages(userInfo);
     }
 
     axios(
         { url: `${domain}/api/user`, 
-            method: 'post', 
-            data: { email: inputBox[0].value }}
-        )
-        .then(handleUserStart);
+        method: 'post', 
+        data: { email: inputBox[0].value }}
+    ).then(handleUserStart);
     
 }
-
 inputBox.addEventListener('submit', handleStart);
-
 createScreen();
-

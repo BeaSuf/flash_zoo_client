@@ -25,7 +25,11 @@ let playScreen = function(data) {
         img.classList.add('img');
         img.src = shuffledImg[i].image_url
         card.appendChild(img)
+        testScreen.appendChild(card);
 
+        let emptyCard = document.createElement('div');
+        emptyCard.classList.add('box'); 
+        card.appendChild(emptyCard)
         testScreen.appendChild(card);
     }
 
@@ -48,6 +52,18 @@ let playScreen = function(data) {
 
         tests.appendChild(card);
     }
+
+    let childMessage = testIntruct.lastElementChild;  
+    while (childMessage) { 
+        testIntruct.removeChild(childMessage); 
+        childMessage = testIntruct.lastElementChild
+    }
+
+    let message = document.createElement('h2');
+    message.textContent = 'You have 10 clicks...click on any word & match it with the correct animal on the card...'
+    message.classList.add('text');
+    testIntruct.append(message);
+
     dataPlayscreen = data
 }
 
@@ -61,14 +77,9 @@ let playCounter = 0
 let imgCardClickHandle = function(event){
     if(wordClicked === true) {
         imgClass = event.target.closest('.card').classList[1]  
-        // event.target.closest('.card').classList.add('vivify', 'blink', 'duration-500')
         wordClicked = false
         playCounter++
         checkCorrect(wordClass, imgClass, dataPlayscreen,)
-        // if(incorrectScore === 7 || correctScore === 7 || playCounter === 10){
-        //     console.log(`showResults`)
-        //     // showResults()
-        // }
     } else {
         return
     }
@@ -99,11 +110,11 @@ let checkCorrect = function(wordClass, imgClass, dataPlayscreen) {
         console.log(`correct`)
 
         if (imgClicked.classList.contains('vivify')) {
-            imgClicked.classList.remove('vivify', 'blink', 'duration-500')
-            imgClicked.classList.remove('vivify', 'flip', 'duration-800')
+            imgClicked.classList.remove('vivify', 'blink', 'duration-900')
+            imgClicked.classList.remove('vivify', 'flip', 'duration-900')
 
         }
-        imgClicked.classList.add('vivify', 'flip', 'duration-800')
+        imgClicked.classList.add('vivify', 'flip', 'duration-900')
 
         correctScore++
         console.log(correctScore)
@@ -116,10 +127,11 @@ let checkCorrect = function(wordClass, imgClass, dataPlayscreen) {
     } else {
         console.log(`incorrect`)
         if (imgClicked.classList.contains('vivify')) {
-            imgClicked.classList.remove('vivify', 'flip', 'duration-800')
-            imgClicked.classList.remove('vivify', 'blink', 'duration-500')
+            imgClicked.classList.remove('vivify', 'flip', 'duration-900')
+            imgClicked.classList.remove('vivify', 'blink', 'duration-900')
         }
-        imgClicked.classList.add('vivify', 'blink', 'duration-500')
+        imgClicked.classList.add('vivify', 'blink', 'duration-900')
+        
         incorrectScore++
         console.log(incorrectScore)
         imgClicked.classList.add(0);
