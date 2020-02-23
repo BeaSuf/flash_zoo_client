@@ -106,7 +106,7 @@ function animateImg(imgClicked, animationName, duration){
     imgClicked.classList.add('vivify', animationName, duration)
 
     function handleAnimationEnd() {
-        imgClicked.classList.remove('vivify', animationName, 'duration-900')
+        imgClicked.classList.remove('vivify', animationName, duration)
         imgClicked.removeEventListener('animationend', handleAnimationEnd)    
     }
 
