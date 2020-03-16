@@ -5,8 +5,8 @@ const createScreen = () => {
     startPage.classList.remove('hide')
 
     let userInput = document.createElement('input');
-    userInput.setAttribute('type', 'email');
-    userInput.setAttribute('placeholder', 'Your Email');
+    userInput.setAttribute('type', 'text');
+    userInput.setAttribute('placeholder', 'Your Name');
     inputBox.appendChild(userInput);
     
     let startButton = document.createElement('button');
